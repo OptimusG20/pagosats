@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facturas - NóminaApp</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="style/main.css">
+    
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+</head>
+<body>
+
+    <div class="admin-layout">
+        
+        <nav class="panel left-panel">
+            <a href="index.html" class="logo">NóminaApp</a>
+            <nav class="main-menu">
+                <h2>General</h2>
+                <ul>
+                    <li><a href="admin.html"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+                    <li><a href="facturas.html" class="active"><i class="fa-solid fa-file-invoice"></i> Facturas</a></li>
+                    <li><a href="wallet-config.html"><i class="fa-solid fa-wallet"></i> Billetera</a></li>
+                </ul>
+                <h2 style="margin-top: 20px;">Gestión</h2>
+                <ul>
+                    <li><a href="#"><i class="fa-solid fa-users"></i> Trabajadores</a></li>
+                    <li><a href="#"><i class="fa-solid fa-shield-halved"></i> Roles y Permisos</a></li>
+                    <li><a href="#"><i class="fa-solid fa-file-contract"></i> Documentación</a></li>
+                </ul>
+            </nav>
+        </nav>
+
+        <main class="panel center-panel">
+            <h1><i class="fa-solid fa-file-invoice"></i> Generar Factura de Cobro</h1>
+            <p>Introduce la cantidad y una descripción para generar una factura de Lightning Network.</p>
+            
+            <div class="form-group-vertical">
+                <label for="amount">Cantidad (SATS)</label>
+                <input type="number" id="amount" placeholder="Ej: 1000" min="1">
+            </div>
+            <div class="form-group-vertical">
+                <label for="description">Descripción (opcional)</label>
+                <input type="text" id="description" placeholder="Ej: Pago de almuerzo">
+            </div>
+            
+            <button id="generateInvoiceBtn" class="btn btn-primary" style="margin-top: 20px;"><i class="fa-solid fa-plus-circle"></i> Generar Factura</button>
+
+            <div id="invoiceDisplay" class="invoice-display-card" style="display: none;">
+                <h3>Factura Generada</h3>
+                <div id="qrcode" class="qr-code-container"></div>
+                <p id="invoice-text" class="invoice-text"></p>
+                <button class="btn btn-secondary copy-invoice-btn"><i class="fa-solid fa-copy"></i> Copiar Factura</button>
+                <p class="small-text" style="margin-top: 10px;">Escanea este QR con tu billetera Lightning para pagar.</p>
+                <p id="invoice-status" class="invoice-status"></p>
+            </div>
+
+            <div style="margin-top: 30px;">
+                <h2><i class="fa-solid fa-list-ul"></i> Facturas Pendientes</h2>
+                <div id="pendingInvoicesList" class="worker-list-container">
+                    <p style="color: var(--text-secondary);">No hay facturas pendientes.</p>
+                </div>
+            </div>
+        </main>
+
+        <aside class="panel right-panel">
+            <div class="profile-card">
+                <div class="avatar">A</div>
+                <h3>Hola, Admin</h3>
+                <p>Jefe de Operaciones</p>
+                <button class="btn btn-primary" style="margin-top: 15px; width: 100%;">Ver Perfil</button>
+            </div>
+            
+            <div class="action-box">
+                <h4><i class="fa-solid fa-bolt-lightning"></i> Pago Rápido</h4>
+                <p>Paga cualquier factura a un amigo, tienda, etc.</p>
+                <a href="admin.html#quickpay" class="btn btn-primary" style="width: 100%;">
+                    <i class="fa-solid fa-camera"></i> Escanear Factura
+                </a>
+            </div>
+
+            <div class="action-box">
+                <h4>Actividad de Pagos</h4>
+                <p>Ver historial de transacciones.</p>
+                <button class="btn btn-primary" style="width: 100%; opacity: 0.5; cursor: not-allowed;" disabled>
+                    Ver Historial (Próximamente)
+                </button>
+            </div>
+
+            <h2>Actividad Reciente</h2>
+            <ul class="activity-feed">
+                <li>
+                    <strong>Maria García</strong> ha solicitado un pago.
+                    <span><i class="fa-solid fa-clock"></i> Hace 15 minutos</span>
+                </li>
+            </ul>
+        </aside>
+
+    </div>
+    
+    <script src="js/invoices.js"></script>
+</body>
+</html>

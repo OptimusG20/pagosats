@@ -1,0 +1,95 @@
+/* --- 1. Reseteo Básico --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* --- 2. El Cuerpo (El fondo es la estrella) --- */
+body {
+    font-family: 'Manrope', 'system-ui', sans-serif;
+    background-color: #02040a;
+    color: #ffffff;
+    background-image: 
+        radial-gradient(at 70% 30%, hsla(160, 70%, 40%, 0.2) 0px, transparent 50%),
+        radial-gradient(at 10% 80%, hsla(220, 70%, 60%, 0.1) 0px, transparent 50%),
+        radial-gradient(at 90% 90%, hsla(180, 70%, 50%, 0.15) 0px, transparent 60%);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* --- 3. Contenedores de Layout --- */
+.header {
+    position: absolute;
+    top: 2.5rem;
+    left: 2.5rem;
+}
+.logo {
+    font-weight: 700;
+    font-size: 1.2rem;
+    text-decoration: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.logo::before {
+    content: '';
+    display: block;
+    width: 12px;
+    height: 12px;
+    background-color: #00f2a0;
+    transform: rotate(45deg);
+}
+.main-content {
+    padding: 2rem;
+}
+.footer {
+    position: absolute;
+    bottom: 2.5rem;
+    right: 2.5rem;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* --- 4. Estilos de Texto --- */
+h1 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-weight: 800;
+    letter-spacing: -1px;
+    background: linear-gradient(90deg, #ffffff, #c7d2fe);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 1rem;
+}
+p {
+    font-size: 1.125rem;
+    color: #c1c9d6;
+    max-width: 600px;
+    margin: 0 auto 2.5rem auto;
+    line-height: 1.6;
+}
+
+/* --- 5. El Botón (Call to Action) --- */
+.cta-button {
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: #f0b90b; 
+    border: 2px solid #f0b90b;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    background-color: transparent;
+    transition: all 0.3s ease;
+}
+.cta-button:hover {
+    background-color: #f0b90b;
+    color: #02040a;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(240, 185, 11, 0.2);
+}

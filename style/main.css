@@ -1,0 +1,475 @@
+/* --- 1. Estilos Base --- */
+:root {
+    --bg-color: #02040a;
+    --glass-bg: rgba(10, 15, 26, 0.7);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --text-primary: #ffffff;
+    --text-secondary: #9ca3af;
+    --brand-teal: #00f2a0;
+    --brand-yellow: #f0b90b;
+    --brand-red: #f44336;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Manrope', 'system-ui', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    background-image: 
+        radial-gradient(at 70% 30%, hsla(160, 70%, 40%, 0.2) 0px, transparent 50%),
+        radial-gradient(at 10% 80%, hsla(220, 70%, 60%, 0.1) 0px, transparent 50%),
+        radial-gradient(at 90% 90%, hsla(180, 70%, 50%, 0.15) 0px, transparent 60%);
+    min-height: 100vh;
+}
+
+a {
+    color: var(--brand-teal);
+    text-decoration: none;
+}
+
+h1, h2, h3 {
+    letter-spacing: -0.5px;
+    margin-bottom: 15px;
+}
+h2 { 
+    border-bottom: 1px solid var(--border-color); 
+    padding-bottom: 10px; 
+}
+
+/* --- 2. Layout del Panel --- */
+.admin-layout {
+    display: grid;
+    grid-template-columns: 260px 1fr 320px;
+    gap: 20px;
+    padding: 20px;
+    height: 100vh;
+}
+
+.panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 25px;
+    overflow-y: auto;
+}
+
+.panel::-webkit-scrollbar { width: 6px; }
+.panel::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 3px; }
+
+/* --- 3. Panel Izquierdo (Menú) --- */
+.left-panel { grid-column: 1 / 2; }
+
+.logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 30px;
+}
+.logo::before {
+    content: '';
+    display: block;
+    width: 15px;
+    height: 15px;
+    background-color: var(--brand-teal);
+    transform: rotate(45deg);
+}
+
+.main-menu ul { list-style: none; }
+.main-menu li { margin-bottom: 10px; }
+.main-menu a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    color: var(--text-secondary);
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+.main-menu a i { width: 20px; text-align: center; }
+.main-menu a:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+}
+.main-menu a.active {
+    background: var(--brand-teal);
+    color: var(--bg-color);
+}
+
+/* --- 4. Panel Central --- */
+.center-panel { grid-column: 2 / 3; }
+
+.worker-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-radius: 8px;
+    background: rgba(26, 37, 60, 0.5);
+    border: 1px solid var(--border-color);
+    margin-bottom: 10px;
+}
+.worker-card strong { font-size: 1.2em; }
+.worker-card .actions { display: flex; gap: 10px; }
+
+/* --- 5. Panel Derecho --- */
+.right-panel { grid-column: 3 / 4; }
+
+.profile-card {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.profile-card .avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--brand-yellow);
+    margin: 0 auto 15px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--bg-color);
+    border: 3px solid var(--border-color);
+}
+.profile-card h3 { margin-bottom: 5px; }
+.profile-card p {
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+.profile-card .btn { margin-top: 15px; }
+
+.action-box {
+    background: rgba(26, 37, 60, 0.5);
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+.action-box p {
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+}
+.action-box .btn { display: block; width: 100%; }
+
+.activity-feed li {
+    list-style: none;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+.activity-feed li:last-child { border-bottom: none; }
+.activity-feed li strong { color: var(--text-primary); }
+.activity-feed li span {
+    font-size: 0.8rem;
+    display: block;
+    margin-top: 4px;
+}
+
+/* --- 6. Botones (Genéricos) --- */
+.btn {
+    padding: 10px 15px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+.btn-primary {
+    color: var(--bg-color);
+    background-color: var(--brand-teal);
+    border: 2px solid var(--brand-teal);
+}
+.btn-primary:hover { background-color: transparent; color: var(--brand-teal); }
+
+.btn-yellow {
+    color: var(--bg-color);
+    background-color: var(--brand-yellow);
+    border: 2px solid var(--brand-yellow);
+}
+.btn-yellow:hover { background-color: transparent; color: var(--brand-yellow); }
+
+.btn-danger {
+    color: var(--bg-color);
+    background-color: var(--brand-red);
+    border: 2px solid var(--brand-red);
+    padding: 10px 12px;
+}
+.btn-danger:hover { background-color: transparent; color: var(--brand-red); }
+
+/* --- 7. Formularios y Controles --- */
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+}
+.form-group input[type="text"] {
+    flex-grow: 1;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: var(--text-primary);
+    font-family: 'Manrope', sans-serif;
+}
+.form-group-vertical {
+    margin-bottom: 20px;
+}
+.form-group-vertical label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-secondary);
+}
+.form-group-vertical input[type="text"],
+.form-group-vertical input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: var(--text-primary);
+    font-family: 'Manrope', sans-serif;
+}
+
+/* --- 8. Estilos de wallet-config.html --- */
+.header .logo {
+    font-size: 1.2rem;
+}
+.config-container {
+    width: 100%;
+    max-width: 600px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 30px;
+    margin: auto; /* Para centrarlo si no está en el layout */
+}
+.config-container h1 {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+.savings-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.form-group-vertical input[type="range"] {
+    flex-grow: 1;
+    margin-left: 20px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+.form-group-vertical #savings-value {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--brand-yellow);
+    width: 50px;
+    text-align: right;
+}
+.config-container .btn {
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* --- 9. Responsivo --- */
+@media (max-width: 1024px) {
+    .admin-layout {
+        grid-template-columns: 240px 1fr;
+    }
+    .right-panel {
+        grid-column: 2 / 3;
+        margin-top: 20px;
+    }
+}
+@media (max-width: 768px) {
+    body {
+        height: auto;
+    }
+    .admin-layout {
+        grid-template-columns: 1fr;
+        height: auto;
+    }
+    .panel {
+        overflow-y: visible;
+    }
+    .left-panel, .center-panel, .right-panel {
+        grid-column: 1 / 2;
+        margin-top: 20px;
+    }
+    .header { 
+        position: static; 
+        text-align: center;
+        padding-top: 20px;
+    }
+    .config-container {
+        margin-top: 20px;
+    }
+}
+
+/* --- 10. Estilos para el Modal del Scanner --- */
+.modal-overlay {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-color);
+    padding: 25px;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 12px;
+    position: relative;
+    text-align: center;
+}
+
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.close-button:hover {
+    color: var(--text-primary);
+}
+
+/* Estilos para el lector de QR */
+#qr-reader {
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto 0;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden; /* Para que el video no se salga */
+}
+
+
+/* --- 11. Estilos para la página de Facturas --- */
+.invoice-display-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 25px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.qr-code-container {
+    padding: 15px;
+    background-color: var(--text-primary); /* Fondo blanco para el QR */
+    display: inline-block; /* Para centrar y ajustar al contenido */
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+/* Ajuste para el canvas del QR */
+.qr-code-container canvas {
+    display: block; /* Elimina espacio extra */
+}
+
+.invoice-text {
+    font-family: 'monospace', monospace;
+    word-break: break-all;
+    background-color: var(--input-bg);
+    border: 1px solid var(--border-color);
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 0.85em;
+    margin-top: 15px;
+    color: var(--text-secondary);
+}
+
+.copy-invoice-btn {
+    margin-top: 15px;
+    background-color: var(--brand-blue);
+    color: var(--text-primary);
+    border: none;
+}
+
+.copy-invoice-btn:hover {
+    background-color: #3f6eff; /* Un azul ligeramente más claro */
+}
+
+.invoice-status {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.invoice-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+    background: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.invoice-card .small-text {
+    font-size: 0.8em;
+    color: var(--text-secondary);
+    margin-top: 5px;
+}
+
+.invoice-hash {
+    font-family: 'monospace', monospace;
+}
+
+.invoice-status-badge {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    font-weight: bold;
+    color: var(--bg-color);
+}
+
+.invoice-status-badge.pending {
+    background-color: var(--brand-yellow);
+}
+
+.invoice-status-badge.paid {
+    background-color: var(--brand-teal);
+}
+
+.delete-invoice-btn {
+    margin-left: 10px;
+    padding: 8px 12px;
+}

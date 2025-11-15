@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurar Billetera</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="style/main.css">
+</head>
+<body>
+    
+    <header class="header">
+        <a href="admin.html" class="logo">
+            <i class="fa-solid fa-arrow-left" style="margin-right: 10px; color: var(--text-secondary);"></i>
+            Volver al Panel
+        </a>
+    </header>
+    
+    <div class="config-container">
+        <h1><i class="fa-solid fa-wallet"></i> Configurar Billetera</h1>
+        
+        <form id="config-form" onsubmit="return false;">
+            <div class="form-group-vertical" id="admin-wallet-config">
+                <label for="node-url">URL del Servidor LNbits</label>
+                <input type="text" id="node-url" placeholder="Ej: http://chirilicas.com:5000/">
+                
+                <label for="api-key" style="margin-top: 15px;">Admin Key</label>
+                <input type="password" id="api-key" placeholder="Pega tu Admin Key secreta aquí">
+            </div>
+            
+            <hr style="border-color: var(--border-color); margin: 30px 0;">
+            
+            <div class="form-group-vertical" id="user-savings-config">
+                <label>Ahorro Automático (Próximamente)</label>
+                <p style="color: var(--text-secondary); font-size: 0.9em; margin-bottom: 15px;">
+                    Define un porcentaje de cada pago que irá a tu bóveda de ahorros.
+                </p>
+                <div class="savings-group">
+                    <span>0%</span>
+                    <input type="range" id="savings-slider" min="0" max="25" value="10" step="1">
+                    <span id="savings-value">10%</span>
+                </div>
+            </div>
+            
+            <button id="save-settings-btn" class="btn btn-primary">Guardar Configuración</button>
+        </form>
+    </div>
+
+    <script src="js/wallet.js"></script>
+</body>
+</html>
