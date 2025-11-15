@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentación - NóminaApp</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="style/main.css">
+</head>
+<body>
+
+    <div class="admin-layout">
+        
+        <nav class="panel left-panel">
+            <a href="index.html" class="logo">NóminaApp</a>
+            <nav class="main-menu">
+                <h2>General</h2>
+                <ul>
+                    <li><a href="admin.html"><i class="fa-solid fa-house"></i> Dashboard</a></li>
+                    <li><a href="facturas.html"><i class="fa-solid fa-file-invoice"></i> Facturas</a></li> 
+                    <li><a href="wallet-config.html"><i class="fa-solid fa-wallet"></i> Billetera</a></li>
+                </ul>
+                <h2 style="margin-top: 20px;">Gestión</h2>
+                <ul>
+                    <li><a href="#"><i class="fa-solid fa-users"></i> Trabajadores</a></li>
+                    <li><a href="#"><i class="fa-solid fa-shield-halved"></i> Roles y Permisos</a></li>
+                    <li><a href="documentacion.html" class="active"><i class="fa-solid fa-file-contract"></i> Documentación</a></li>
+                </ul>
+            </nav>
+        </nav>
+
+        <main class="panel center-panel">
+            <h1><i class="fa-solid fa-file-contract"></i> Documentación de Trabajadores</h1>
+            
+            <div id="docWorkersListSection">
+                <h2><i class="fa-solid fa-users"></i> Selecciona un Trabajador</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 20px;">
+                    Selecciona un trabajador para ver o editar sus notas.
+                </p>
+                <div id="docWorkersList" class="doc-worker-list-container">
+                    </div>
+            </div>
+
+            <div id="docEditorArea" style="display: none;">
+                <button id="backToListBtn" class="btn btn-secondary" style="margin-bottom: 20px;">
+                    <i class="fa-solid fa-arrow-left"></i> Volver a la Lista
+                </button>
+                <h3>Notas para: <span id="docWorkerName" style="color: var(--brand-teal);"></span></h3>
+                
+                <textarea id="docEditor" placeholder="Escribe aquí las notas del trabajador... (Ej: Tareas completadas, fechas de pago, etc.)"></textarea>
+                
+                <button id="saveDocBtn" class="btn btn-primary" style="margin-top: 15px;">
+                    <i class="fa-solid fa-save"></i> Guardar Notas
+                </button>
+            </div>
+        </main>
+
+        <aside class="panel right-panel">
+            <div class="profile-card">
+                <div class="avatar">A</div>
+                <h3>Hola, Admin</h3>
+                <p>Jefe de Operaciones</p>
+                <button class="btn btn-primary" style="margin-top: 15px; width: 100%;">Ver Perfil</button>
+            </div>
+            
+            <div class="action-box">
+                <h4><i class="fa-solid fa-bolt-lightning"></i> Pago Rápido</h4>
+                <p>Paga cualquier factura a un amigo, tienda, etc.</p>
+                <a href="admin.html" class="btn btn-primary" style="width: 100%;">
+                    <i class="fa-solid fa-camera"></i> Ir a Pagar
+                </a>
+            </div>
+        </aside>
+
+    </div>
+    
+    <script src="js/docs.js"></script>
+</body>
+</html>

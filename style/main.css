@@ -473,3 +473,54 @@ h2 {
     margin-left: 10px;
     padding: 8px 12px;
 }
+
+/* --- 13. Estilos para Documentación --- */
+
+.doc-worker-list-container .doc-worker-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 10px;
+    background: rgba(26, 37, 60, 0.5);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.doc-worker-list-container .doc-worker-card:hover {
+    background: rgba(26, 37, 60, 0.9);
+    border-color: var(--brand-teal);
+}
+
+.doc-worker-card p {
+    color: var(--text-secondary);
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+.doc-editor-area textarea {
+    width: 100%;
+    min-height: 400px; /* Altura mínima para escribir */
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: var(--text-primary);
+    font-family: 'Manrope', sans-serif;
+    margin-top: 15px;
+    resize: vertical; /* Permite al usuario cambiar la altura */
+}
+
+#backToListBtn {
+    background-color: transparent;
+    border: 2px solid var(--text-secondary);
+    color: var(--text-secondary);
+}
+
+#backToListBtn:hover {
+    background-color: var(--text-secondary);
+    color: var(--bg-color);
+}
